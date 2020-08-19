@@ -50,9 +50,9 @@ def open_search(url, query, max_results=10, timeout=60):
 
                 if rel and href and type:
                     if 'http://opds-spec.org/thumbnail' in rel:
-                        s.cover_url = href
+                        s.cover_url = 'https://standardebooks.org' + href
                     elif 'http://opds-spec.org/image/thumbnail' in rel:
-                        s.cover_url = href
+                        s.cover_url = 'https://standardebooks.org' + href
                     elif 'http://opds-spec.org/acquisition' in rel:
                         if type:
                             ext = href.split('.')[1]
@@ -65,6 +65,7 @@ def open_search(url, query, max_results=10, timeout=60):
             s.author = ', '.join(data.xpath('./*[local-name() = "author"]//*[local-name() = "name"]//text()')).strip()
 
             yield s
+
 
 def search(query, max_results=10, timeout=60):
     for result in open_search(SEARCH_URL, query, max_results=max_results, timeout=timeout):
@@ -83,6 +84,7 @@ class StandardEbooksStore(BasicStoreConfig, OpenSearchOPDSStore):
             s.price = '$0.00'
             s.drm = SearchResult.DRM_UNLOCKED
             yield s
+
 
 if __name__ == '__main__':
     import sys

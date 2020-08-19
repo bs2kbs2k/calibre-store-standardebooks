@@ -6,11 +6,10 @@ __copyright__ = '2020, bs2k <bs2k@naver.com>'
 __docformat__ = 'restructuredtext en'
 
 from calibre.customize import StoreBase
-from calibre.gui2.store import StorePlugin
 
 class StandardEbooksStore(StoreBase):
     name            = 'Standard Ebooks'
-    version         = (0, 1, 0)
+    version         = (0, 1, 1)
     description     = 'Free and liberated ebooks, carefully produced for the true book lover.'
     author          = 'bs2k <bs2k@naver.com>'
     actual_plugin   = 'calibre_plugins.bs2k_store_standardebooks.standardebooks:StandardEbooksStore'
